@@ -12,13 +12,16 @@ const tabEntry = document.querySelector('.topics')
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
  .then(response => {
-  const dataObj = response.data.topics.forEach(item => {
-   tabEntry.appendChild(TabComponent(item));
- 
-  });
-  console.log(response)
+   response.data.topics.forEach(item => {
+   tabEntry.appendChild(TabComponent(item))
+  })
+  // .catch(error => {
+  //  console.log(error)
 
- })
+   //why does it say cannot read property of 'catch' of undefined?
+  // }) 
+
+ });
 
  function TabComponent (data){
   //define elements
@@ -29,8 +32,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
   // set text content
   tabDiv.textContent = data;
-
-  // set up structure
   
 
   return tabDiv;

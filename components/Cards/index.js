@@ -21,7 +21,7 @@ const cardEntry = document.querySelector('.cards-container');
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
  .then(response => {
-  console.log("articles", response);
+  // console.log("articles", response);
   response.data.articles;
   response.data.articles.javascript.forEach(item => {
    const newCard = cardCreator(item);
@@ -52,7 +52,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
   console.log(error);
  })
 
- 
+
 
  // Component function
  function cardCreator(data){
