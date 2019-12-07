@@ -7,3 +7,32 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+const tabEntry = document.querySelector('.topics')
+
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
+ .then(response => {
+   response.data.topics.forEach(item => {
+   tabEntry.appendChild(TabComponent(item))
+  })
+  // .catch(error => {
+  //  console.log(error)
+
+   //why does it say cannot read property of 'catch' of undefined?
+  // }) 
+
+ });
+
+ function TabComponent (data){
+  //define elements
+  const tabDiv = document.createElement('div');
+
+  // set class names
+  tabDiv.classList.add('tab');
+
+  // set text content
+  tabDiv.textContent = data;
+  
+
+  return tabDiv;
+ }
