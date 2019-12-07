@@ -17,35 +17,48 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
-const cardEntry = document.querySelector('.cards-container');
+
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
  .then(response => {
-  // console.log("articles", response);
-  response.data.articles;
-  response.data.articles.javascript.forEach(item => {
-   const newCard = cardCreator(item);
-   cardEntry.appendChild(newCard);
-  })
-  response.data.articles.bootstrap.forEach(item => {
-   const newCard = cardCreator(item);
-   cardEntry.appendChild(newCard);
+  // console.log(response);
+  // response.data.articles;
+  const cardEntry = document.querySelector('.cards-container');
+  console.log(response.data.articles);
+
+  Object.values(response.data.articles).forEach(item => {
+   item.forEach(element => {
+    cardEntry.appendChild(cardCreator(element))
+   })
   })
 
-  response.data.articles.technology.forEach(item => {
-   const newCard = cardCreator(item);
-   cardEntry.appendChild(newCard);
-  })
+  // console.log('hello', values);
 
-  response.data.articles.jquery.forEach(item => {
-   const newCard = cardCreator(item);
-   cardEntry.appendChild(newCard);
-  })
 
-  response.data.articles.node.forEach(item => {
-   const newCard = cardCreator(item);
-   cardEntry.appendChild(newCard);
-  })
+
+  // response.data.articles.javascript.forEach(item => {
+  //  const newCard = cardCreator(item);
+  //  cardEntry.appendChild(newCard);
+  // })
+  // response.data.articles.bootstrap.forEach(item => {
+  //  const newCard = cardCreator(item);
+  //  cardEntry.appendChild(newCard);
+  // })
+
+  // response.data.articles.technology.forEach(item => {
+  //  const newCard = cardCreator(item);
+  //  cardEntry.appendChild(newCard);
+  // })
+
+  // response.data.articles.jquery.forEach(item => {
+  //  const newCard = cardCreator(item);
+  //  cardEntry.appendChild(newCard);
+  // })
+
+  // response.data.articles.node.forEach(item => {
+  //  const newCard = cardCreator(item);
+  //  cardEntry.appendChild(newCard);
+  // })
  
  })
  .catch(error => {
